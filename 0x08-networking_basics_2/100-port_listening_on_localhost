@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script is to help to listen to
+# lcalhost on port 98.
+
+nc -l localhost 98

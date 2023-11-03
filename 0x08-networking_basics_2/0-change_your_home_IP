@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script Configures an Ubuntu server to:
+#   - localhost resolves to 127.0.0.2
+#   - facebook.com resolves to 8.8.8.8
+
+cp /etc/hosts ~/hosts.mod
+echo "127.0.0.2         localhost" > ~/hosts.mod
+echo "8.8.8.8           facebook.com" >> ~/hosts.mod
+cp -f ~/hosts.mod /etc/hosts

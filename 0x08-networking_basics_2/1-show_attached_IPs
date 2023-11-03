@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This a bash sript that s diplays all active ipv4
+# depending on the machine its running on
+
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
