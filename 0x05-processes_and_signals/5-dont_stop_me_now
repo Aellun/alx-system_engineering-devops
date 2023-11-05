@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # Kills the 4-to_infinity_and_beyond process
 
-kill "$(pgrep -f 4-to_infinity_and_beyond)"
+if pgrep -f "4-to_infinity_and_beyond" > /dev/null; then
+  echo "0 One or more processes matched the criteria"
+  pkill -f "4-to_infinity_and_beyond"
+else
+  echo "1 No processes matched"
+fi
