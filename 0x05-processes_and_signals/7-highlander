@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 # Displays "To infinity and beyond" indefinitely addition to
 # a sleep 2 in between each iteration
 #   Displays "I am invincible!!!" in between each iteration
