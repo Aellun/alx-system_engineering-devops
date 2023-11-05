@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Displays a list of currently running procecesss
-#   Shows all processes, for all users, including those
-#+  which might not have a TTY
-
-ps -e -o user,pid,tty,cmd | grep -v pts
+# Shows all processes, for all users, including those
+# which might not have a TTY
+pids_without_pts=$(pgrep -v -t pts)
+ps -o user,pid,tty,command -p "$pids_without_pts" | sed 's/^\s*//'
