@@ -1,15 +1,16 @@
 #!/usr/bin/env puppet
-#using puppet to carryout client configuration
+#using puppet to configure no password access to server
+
 file { '/etc/ssh/ssh_config':
-  ensure  => present,
+  ensure => present,
 }
-file_line { 'Turn off passwd auth':
+
+ssh_config { 'Turn off password auth':
   path  => '/etc/ssh/ssh_config',
-  line  => 'passwordAuthentication no',
-  match => '^#passwordAuthentication',
+  value => 'PasswordAuthentication no',
 }
-file_line { 'Declare identity file':
+
+ssh_config { 'Declare identity file':
   path  => '/etc/ssh/ssh_config',
-  line  => 'identityFile ~/.ssh/school',
-  match => '^#identityFile',
+  value => 'IdentityFile ~/.ssh/school',
 }
