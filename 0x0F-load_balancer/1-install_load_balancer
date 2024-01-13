@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# script to install and configure HAProxy on lb-01 server
+# Configures HAProxy to send traffic to web-01 and web-02 servers
+# Distributes requests using a roundrobin algorithm
+# HAProxy can be managed via an init script
+
+# Install and configure HAproxy on lb-01 server.
+echo -e "Updating and installing HAproxy.\n"
+sudo apt-get -y update
+apt-get -y install haproxy
+
+# edit config file
+server_config=\
+"
+frontend Aellun_frontend
+        bind *:80
+        mode http
+        default_backend Aellun_backend
+backend Aellun_backend
+        balance roundrobin
+        server 437592-web-01 18.206.207.218 check
+        server 437592-web-02 54.89.181.222 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable haproxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Testing the HAproxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Restart the Nginx service
+sudo service haproxy restart
