@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#  addition of -f flag in ln to forcefully replace the file if it already exists.
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+rm /run/nginx.pid
