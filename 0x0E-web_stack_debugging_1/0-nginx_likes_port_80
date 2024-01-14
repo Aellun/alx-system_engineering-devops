@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Debugging Nginx Port 80 Issue
+# Resolution: Removed the existing configuration in ../sites-enabled/default and replaced it
+# with a copy from ../sites-available/default using a symbolic link.
+# something to note: The -s flag creates a symbolic link, and -f deletes the existing file before replacing it.
+
+# Creating a symbolic link to replace the configuration in sites-enabled with the one in sites-available
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restarting the Nginx service to apply the changes
+sudo service nginx restart
