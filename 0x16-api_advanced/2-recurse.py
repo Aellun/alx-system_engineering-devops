@@ -6,12 +6,13 @@ Recursive function that queries the Reddit API and returns a list
 """
 import requests
 
+
 def recurse(subreddit, hot_list=[], after=None):
     """returning top post titles recursively"""
     user_agent = {'User-Agent': 'api_advanced-project'}
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     parameters = {'after': after} if after else {}
-    
+
     results = requests.get(url, params=parameters, headers=user_agent, allow_redirects=False)
 
     if results.status_code == 200:
