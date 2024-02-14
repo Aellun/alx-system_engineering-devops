@@ -6,6 +6,7 @@ function that queries the Reddit API and returns the number of subscribers
 
 from requests import get
 
+
 def number_of_subscribers(subreddit):
     """
     number of subscribers for a given subreddit
@@ -27,4 +28,3 @@ def number_of_subscribers(subreddit):
         print(f"An error occurred: {e}")
 
     return 0
-
