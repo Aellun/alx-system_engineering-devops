@@ -10,5 +10,4 @@ PID_FILE="/run/hbnb/hbnb.pid"
 NUM_WORKERS=3
 
 # Gracefully restart Gunicorn
-$GUNICORN_BIN -c /path/to/your/gunicorn_config.py --pid $PID_FILE -u ubuntu -g ubuntu --workers $NUM_WORKERS -k gevent --reload
-
+$GUNICORN_BIN -c /home/ubuntu/.local/bin/gunicorn/gunicorn_config.py --pid $PID_FILE -u ubuntu -g ubuntu --workers $NUM_WORKERS -k gevent --reload
