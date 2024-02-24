@@ -14,9 +14,6 @@ ExecReload = /bin/kill -s HUP $MAINPID
 ExecStop = /bin/kill -s TERM $MAINPID
 ExecStopPost = /bin/rm -rf /run/hbnb
 PrivateTmp = false 
-StandardOutput=file:/tmp/airbnb-access.log
-StandardError=file:/tmp/airbnb-error.log
-Restart=always
 
 [Install]
 WantedBy = multi-user.target
