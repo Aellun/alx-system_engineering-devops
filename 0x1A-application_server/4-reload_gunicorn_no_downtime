@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-# this script restart gunicor gracefully and workers one at
-# a time ensuring there is no downtime
+# This script restarts Gunicorn gracefully and workers one at a time, ensuring there is no downtime
 
-# Number of workers to gracefully restart
-# NUM_WORKERS=3
-
-#  find the process IDs of Gunicorn processes and send the SIGHUP signal 
+# Find the process IDs of Gunicorn processes and send the SIGHUP signal 
 pgrep gunicorn | xargs -I{} kill -HUP {}
