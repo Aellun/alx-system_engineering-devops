@@ -1,12 +1,6 @@
 #!/bin/bash
-# Set path to Gunicorn binary
-GUNICORN_BIN="/home/ubuntu/.local/bin/gunicorn"
-
-# Set path to Gunicorn PID file
-PID_FILE="/run/hbnb/hbnb.pid"
 
 # Number of workers to gracefully restart
 NUM_WORKERS=3
- 
-# Gracefully restart Gunicorn without a specific configuration file
-$GUNICORN_BIN --pid $PID_FILE -u ubuntu -g ubuntu --workers $NUM_WORKERS -k gevent --reload
+
+pgrep gunicorn | xargs -I{} kill -HUP {}
