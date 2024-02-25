@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # This script restarts Gunicorn gracefully and workers one at a time, ensuring there is no downtime
 
-# Find the process IDs of Gunicorn processes and send the SIGHUP signal 
-pgrep gunicorn | xargs -I{} kill -HUP {}
+# Find the process IDs of Gunicorn processes and send the SIGHUP signal
+pgrep gunicorn | while read -r pid; do
+    if kill -0 "$pid" 2>/dev/null; then
+        kill -HUP "$pid"
+    else
+        echo "Invalid process ID: $pid"
+    fi
+done
