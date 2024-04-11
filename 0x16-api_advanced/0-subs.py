@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """function that queries the Reddit API and returns the number of subscribers
 (not active users, total subscribers) for a given subreddit. return 0"""
+
+
 def number_of_subscribers(subreddit):
     """Return the total number of subscribers on a given subreddit."""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
